@@ -108,6 +108,15 @@ describe('highlight', function() {
     expect(testNode.innerHTML).toEqual(after);
   });
 
+  it('should avoid splitting Myanmar diacritics', function() {
+    var before = 'နေပြည်တော်',
+        after = 'နေ<strong>ပြ</strong>ည်တော်',
+        testNode = buildTestNode(before);
+
+    highlight({ node: testNode, pattern: 'ပ' });
+    expect(testNode.innerHTML).toEqual(after);
+  });
+
   function buildTestNode(content) {
     var node = document.createElement('div');
     node.innerHTML = content;
