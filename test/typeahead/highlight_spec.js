@@ -115,6 +115,13 @@ describe('highlight', function() {
 
     highlight({ node: testNode, pattern: 'ပ' });
     expect(testNode.innerHTML).toEqual(after);
+
+    var before = 'နေပြည်တော်',
+        after = 'နေ<strong>ပြ</strong>ည်တော်',
+        testNode = buildTestNode(before);
+
+    highlight({ node: testNode, pattern: 'ပြ' });
+    expect(testNode.innerHTML).toEqual(after);
   });
 
   function buildTestNode(content) {

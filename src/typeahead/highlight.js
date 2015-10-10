@@ -74,18 +74,7 @@ var highlight = (function(doc) {
     var escapedPatterns = [], regexStr;
 
     for (var i = 0, len = patterns.length; i < len; i++) {
-      var isMyanmar = false;
-      for (var c = 0; c < patterns[i].length; c++) {
-        if (patterns[i].charCodeAt(c) >= 0x1000 && patterns[i].charCodeAt(c) <= 0x109F) {
-          isMyanmar = true;
-          break;
-        }
-      }
-      if (isMyanmar) {
-        escapedPatterns.push(_.escapeRegExChars(patterns[i]) + "[[ြ|ျ|ွ|ှ|ျ|ေ|ဲ|ာ|ိ|ူ|ု|ံ|်|့|း]+]?");
-      } else {
-        escapedPatterns.push(_.escapeRegExChars(patterns[i]));
-      }
+      escapedPatterns.push(_.escapeRegExChars(patterns[i]) + "(?:[ြ|ျ|ွ|ှ|ျ|ေ|ဲ|ာ|ိ|ူ|ု|ံ|်|့|း]+)?");
     }
 
     regexStr = wordsOnly ?
