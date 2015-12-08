@@ -1305,7 +1305,9 @@
             if (!o.node || !o.pattern) {
                 return;
             }
-            o.pattern = _.isArray(o.pattern) ? o.pattern : [ o.pattern ];
+            if (!_.isArray(o.pattern)) {
+                o.pattern = [ o.pattern ];
+            }
             regex = getRegex(o.pattern, o.caseSensitive, o.wordsOnly);
             traverse(o.node, hightlightTextNode);
             function hightlightTextNode(textNode) {
@@ -1334,8 +1336,10 @@
         };
         function getRegex(patterns, caseSensitive, wordsOnly) {
             var escapedPatterns = [], regexStr;
+            var accents_and_vowels = "[ြ|ျ|ွ|ှ|ျ|ေ|ဲ|ာ|ိ|ူ|ု|ံ|်|့|း|ि|ु|ृ|ॢ|े|ो|ं|ा|ी|ू|ॄ|ॣ|ै|ौ|:]";
+            var combo_characters = "[္|्]";
             for (var i = 0, len = patterns.length; i < len; i++) {
-                escapedPatterns.push(_.escapeRegExChars(patterns[i]));
+                escapedPatterns.push("(\\W(?:" + accents_and_vowels + "+)?" + combo_characters + ")?" + _.escapeRegExChars(patterns[i]) + "(?:" + accents_and_vowels + "+)?" + "(" + combo_characters + "\\W(" + accents_and_vowels + ")?)?");
             }
             regexStr = wordsOnly ? "\\b(" + escapedPatterns.join("|") + ")\\b" : "(" + escapedPatterns.join("|") + ")";
             return caseSensitive ? new RegExp(regexStr) : new RegExp(regexStr, "i");
