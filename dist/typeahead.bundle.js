@@ -1336,8 +1336,10 @@
         };
         function getRegex(patterns, caseSensitive, wordsOnly) {
             var escapedPatterns = [], regexStr;
+            var accents_and_vowels = "[ြ|ျ|ွ|ှ|ျ|ေ|ဲ|ာ|ိ|ူ|ု|ံ|်|့|း|ि|ु|ृ|ॢ|े|ो|ं|ा|ी|ू|ॄ|ॣ|ै|ौ|:]";
+            var combo_characters = "[္|्]";
             for (var i = 0, len = patterns.length; i < len; i++) {
-                escapedPatterns.push("(\\W(?:[ြ|ျ|ွ|ှ|ျ|ေ|ဲ|ာ|ိ|ူ|ု|ံ|်|့|း]+)?္)?" + _.escapeRegExChars(patterns[i]) + "(?:[ြ|ျ|ွ|ှ|ျ|ေ|ဲ|ာ|ိ|ူ|ု|ံ|်|့|း]+)?" + "(္\\W)?");
+                escapedPatterns.push("(\\W(?:" + accents_and_vowels + "+)?" + combo_characters + ")?" + _.escapeRegExChars(patterns[i]) + "(?:" + accents_and_vowels + "+)?" + "(" + combo_characters + "\\W(" + accents_and_vowels + ")?)?");
             }
             regexStr = wordsOnly ? "\\b(" + escapedPatterns.join("|") + ")\\b" : "(" + escapedPatterns.join("|") + ")";
             return caseSensitive ? new RegExp(regexStr) : new RegExp(regexStr, "i");

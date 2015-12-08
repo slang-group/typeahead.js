@@ -137,6 +137,28 @@ describe('highlight', function() {
     expect(testNode.innerHTML).toEqual(after);
   });
 
+  it('should avoid splitting Devanagari diacritics', function() {
+    var before = 'नेपाली',
+        after = 'नेपा<strong>ली</strong>',
+        testNode = buildTestNode(before);
+
+    highlight({ node: testNode, pattern: 'ल' });
+    expect(testNode.innerHTML).toEqual(after);
+  });
+
+  it('should avoid splitting Devanagari joined characters', function() {
+    var before = 'काठमाण्डू',
+        after = 'काठमा<strong>ण्डू</strong>',
+        testNode = buildTestNode(before);
+
+    highlight({ node: testNode, pattern: 'ड' });
+    expect(testNode.innerHTML).toEqual(after);
+
+    testNode = buildTestNode(before);
+    highlight({ node: testNode, pattern: 'ण' });
+    expect(testNode.innerHTML).toEqual(after);
+  });
+
   function buildTestNode(content) {
     var node = document.createElement('div');
     node.innerHTML = content;
