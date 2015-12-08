@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>typeahead.js – examples</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="http://twitter.com/favicons/favicon.ico">
 
     <link rel="stylesheet" href="../css/examples.css">
   </head>
@@ -28,9 +27,9 @@
       <div class="example" id="the-basics">
         <h2 class="example-name">The Basics</h2>
         <p class="example-description">
-          When initializing a typeahead using the <a href="https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md">typeahead.js jQuery plugin</a>,
-          you pass the plugin method one or more <a href="https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#datasets">datasets</a>. 
-          The source of a dataset is responsible for computing a set of 
+          When initializing a typeahead using the <a href="https://github.com/slang-group/typeahead.unicode.js/blob/master/doc/jquery_typeahead.md">typeahead.js jQuery plugin</a>,
+          you pass the plugin method one or more <a href="https://github.com/slang-group/typeahead.unicode.js/blob/master/doc/jquery_typeahead.md#datasets">datasets</a>.
+          The source of a dataset is responsible for computing a set of
           suggestions for a given query.
         </p>
 
@@ -47,14 +46,14 @@
         <h2 class="example-name">Bloodhound (Suggestion Engine)</h2>
         <p class="example-description">
           For more advanced use cases, rather than implementing the source for
-          your dataset yourself, you can take advantage of <a href="https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md">Bloodhound</a>, 
+          your dataset yourself, you can take advantage of <a href="https://github.com/slang-group/typeahead.unicode.js/blob/master/doc/bloodhound.md">Bloodhound</a>,
           the typeahead.js suggestion engine.
         </p>
 
         <p class="example-description">
-          Bloodhound is robust, flexible, and offers advanced functionalities 
-          such as prefetching, intelligent caching, fast lookups, and 
-          backfilling with remote data.  
+          Bloodhound is robust, flexible, and offers advanced functionalities
+          such as prefetching, intelligent caching, fast lookups, and
+          backfilling with remote data.
         </p>
 
         <div class="demo">
@@ -69,8 +68,8 @@
       <div class="example" id="prefetch">
         <h2 class="example-name">Prefetch</h2>
         <p class="example-description">
-          Prefetched data is fetched and processed on initialization. If the 
-          browser supports local storage, the processed data will be cached 
+          Prefetched data is fetched and processed on initialization. If the
+          browser supports local storage, the processed data will be cached
           there to prevent additional network requests on subsequent page loads.
         </p>
 
@@ -86,8 +85,8 @@
       <div class="example" id="remote">
         <h2 class="example-name">Remote</h2>
         <p class="example-description">
-          Remote data is only used when the data provided by local and prefetch 
-          is insufficient. In order to prevent an obscene number of requests 
+          Remote data is only used when the data provided by local and prefetch
+          is insufficient. In order to prevent an obscene number of requests
           being made to the remote endpoint, requests are rate-limited.
         </p>
 
@@ -99,12 +98,12 @@
           <script src="https://gist.github.com/jharding/9458772.js"></script>
         </div>
       </div>
-      
+
       <div class="example" id="custom-templates">
         <h2 class="example-name">Custom Templates</h2>
         <p class="example-description">
-          Custom templates give you full control over how suggestions get 
-          rendered making it easy to customize the look and feel of your 
+          Custom templates give you full control over how suggestions get
+          rendered making it easy to customize the look and feel of your
           typeahead.
         </p>
 
@@ -121,7 +120,7 @@
         <h2 class="example-name">Default Suggestions</h2>
         <p class="example-description">
           Default suggestions can be shown for empty queries by setting the
-          minLength option to 0 and having the source return suggestions for 
+          minLength option to 0 and having the source return suggestions for
           empty queries.
         </p>
 
