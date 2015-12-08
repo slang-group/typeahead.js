@@ -74,7 +74,7 @@ var highlight = (function(doc) {
     var escapedPatterns = [], regexStr;
 
     for (var i = 0, len = patterns.length; i < len; i++) {
-      escapedPatterns.push(_.escapeRegExChars(patterns[i]) + "(?:[ြ|ျ|ွ|ှ|ျ|ေ|ဲ|ာ|ိ|ူ|ု|ံ|်|့|း]+)?");
+      escapedPatterns.push("(\\W(?:[ြ|ျ|ွ|ှ|ျ|ေ|ဲ|ာ|ိ|ူ|ု|ံ|်|့|း]+)?္)?" + _.escapeRegExChars(patterns[i]) + "(?:[ြ|ျ|ွ|ှ|ျ|ေ|ဲ|ာ|ိ|ူ|ု|ံ|်|့|း]+)?" + "(္\\W)?");
     }
 
     regexStr = wordsOnly ?

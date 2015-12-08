@@ -124,6 +124,19 @@ describe('highlight', function() {
     expect(testNode.innerHTML).toEqual(after);
   });
 
+  it('should avoid splitting Myanmar stacked characters', function() {
+    var before = 'မင်္ဂလာပါ',
+        after = 'မ<strong>င်္ဂ</strong>လာပါ',
+        testNode = buildTestNode(before);
+
+    highlight({ node: testNode, pattern: 'င' });
+    expect(testNode.innerHTML).toEqual(after);
+
+    testNode = buildTestNode(before);
+    highlight({ node: testNode, pattern: 'ဂ' });
+    expect(testNode.innerHTML).toEqual(after);
+  });
+
   function buildTestNode(content) {
     var node = document.createElement('div');
     node.innerHTML = content;
